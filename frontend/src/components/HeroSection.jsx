@@ -21,7 +21,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
               Use a inteligência artificial para entender crises, organizar rotinas e conectar-se com especialistas. 
               O cuidado que seu filho merece, com a tecnologia que você precisa.
             </p>

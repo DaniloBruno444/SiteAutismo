@@ -82,10 +82,14 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Brand */}
-                <div className="text-center space-y-2">
-                  <h2 className="text-4xl font-bold text-gray-800">TEAdobem</h2>
-                  <p className="text-gray-600 text-sm">Inteligência que conecta o cuidado</p>
+                {/* Brand Logo */}
+                <div className="text-center">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_teado-clone/artifacts/xjm3y939_LogoTeaDoBem.png" 
+                    alt="TEAdobem" 
+                    className="h-24 w-auto mx-auto object-contain"
+                  />
+                  <p className="text-gray-600 text-sm mt-2">Inteligência que conecta o cuidado</p>
                 </div>
               </div>
             </div>

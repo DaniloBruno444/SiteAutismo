@@ -14,9 +14,9 @@ const HeroSection = () => {
               <span>Inteligência Artificial para o cuidado</span>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
-              O seu assistente inteligente na{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-500">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              <span className="text-gray-900">O seu assistente inteligente na </span>
+              <span className="text-teal-600">
                 jornada do autismo
               </span>
             </h1>

@@ -29,16 +29,12 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="flex items-center space-x-1">
-              <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-lg font-bold">T</span>
-              </div>
-              <div className="w-8 h-8 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-lg font-bold">T</span>
-              </div>
-            </div>
-            <span className="text-xl font-semibold text-gray-800">TEAdobem</span>
+          <div className="flex items-center space-x-3">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_teado-clone/artifacts/xjm3y939_LogoTeaDoBem.png" 
+              alt="TEAdobem Logo" 
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
           {/* Navigation */}

@@ -9,7 +9,7 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
-            <div className="inline-flex items-center space-x-2 bg-teal-50 text-teal-700 px-4 py-2 rounded-full text-sm font-medium">
+            <div className="inline-flex items-center space-x-2 bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-medium">
               <Sparkles className="w-4 h-4" />
               <span>Inteligência Artificial para o cuidado</span>
             </div>

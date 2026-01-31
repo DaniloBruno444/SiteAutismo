@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  site_institucional:
+    image: nginx:alpine
+    container_name: site_teadobem
+    restart: always
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html:ro
+      # Configuração básica do Nginx para SPA (Single Page App)
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - n8n_default
+    labels:
+      - "traefik.enable=true"
+      # Roteia APENAS o domínio 'site.'
+      - "traefik.http.routers.site-teadobem.rule=Host(`site.danilobruno.com.br`)"
+      - "traefik.http.routers.site-teadobem.entrypoints=websecure"
+      - "traefik.http.routers.site-teadobem.tls=true"
+      - "traefik.http.routers.site-teadobem.tls.certresolver=mytlschallenge"
+      - "traefik.http.services.site-teadobem.loadbalancer.server.port=80"
+      - "traefik.docker.network=n8n_default"
+
+networks:
+  n8n_default:
+    external: true

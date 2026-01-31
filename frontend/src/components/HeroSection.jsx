@@ -39,13 +39,13 @@ const HeroSection = () => {
             </div>
 
             <div className="flex items-center space-x-6 pt-4">
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-sm text-gray-700 font-medium">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="font-medium">100% Seguro (LGPD)</span>
+                <span>100% Seguro (LGPD)</span>
               </div>
-              <div className="flex items-center space-x-2 text-sm text-gray-600">
+              <div className="flex items-center space-x-2 text-sm text-gray-700 font-medium">
                 <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                <span className="font-medium">IA de Ponta</span>
+                <span>IA de Ponta</span>
               </div>
             </div>
           </div>

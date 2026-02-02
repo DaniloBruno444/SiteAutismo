@@ -3,7 +3,6 @@
 export const navigationItems = [
   { name: 'Início', href: '#inicio' },
   { name: 'Funcionalidades', href: '#funcionalidades' },
-  { name: 'Para Profissionais', href: '#profissionais' },
   { name: 'Sobre Nós', href: '#sobre' }
 ];
 
@@ -106,7 +105,6 @@ export const stats = [
 export const footerLinks = {
   produto: [
     { name: 'Funcionalidades', href: '#funcionalidades' },
-    { name: 'Para Profissionais', href: '#profissionais' },
     { name: 'Preços', href: '#' },
     { name: 'Status do Sistema', href: '#' }
   ],

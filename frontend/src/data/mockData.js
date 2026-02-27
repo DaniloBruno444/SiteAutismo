@@ -105,7 +105,7 @@ export const stats = [
 export const footerLinks = {
   produto: [
     { name: 'Funcionalidades', href: '#funcionalidades' },
-    { name: 'Preços', href: '#' }
+    { name: 'Preços', href: '/precos' }
   ],
   empresa: [
     { name: 'Carreiras', href: '/carreiras' },

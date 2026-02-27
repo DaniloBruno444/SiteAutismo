@@ -11,6 +11,7 @@ import ChallengeSection from '@/components/ChallengeSection';
 import { Toaster } from "@/components/ui/sonner";
 import CarreirasPage from '@/pages/CarreirasPage';
 import ContatoPage from '@/pages/ContatoPage';
+import PrecosPage from '@/pages/PrecosPage';
 
 function HomePage() {
     useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/carreiras" element={<CarreirasPage />} />
                 <Route path="/contato" element={<ContatoPage />} />
+                <Route path="/precos" element={<PrecosPage />} />
             </Routes>
         </BrowserRouter>
     );

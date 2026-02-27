@@ -1,8 +1,13 @@
 import React from 'react';
 import { Button } from './ui/button';
-import { Sparkles, Shield } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 const HeroSection = () => {
+  const scrollToFeatures = () => {
+    const el = document.querySelector('#funcionalidades');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="inicio" className="pt-32 pb-20 bg-gradient-to-br from-gray-50 via-white to-teal-50">
       <div className="max-w-7xl mx-auto px-6">
@@ -27,11 +32,14 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-6 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg">
-                Experimente o Téo Grátis →
-              </Button>
+              <a href="https://autismo.danilobruno.com.br/register" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-6 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg">
+                  Experimente o Téo →
+                </Button>
+              </a>
               <Button
                 variant="outline"
+                onClick={scrollToFeatures}
                 className="border-2 border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600 px-8 py-6 rounded-full text-lg font-medium transition-all duration-200"
               >
                 Conheça as Funcionalidades
@@ -82,12 +90,12 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                {/* Brand Logo */}
+                {/* Brand Logo - h-24 → h-36 (50% maior) */}
                 <div className="text-center">
                   <img
                     src="/logo.png"
                     alt="TEAdobem"
-                    className="h-24 w-auto mx-auto object-contain"
+                    className="h-36 w-auto mx-auto object-contain"
                   />
                   <p className="text-gray-600 text-sm mt-2">Inteligência que conecta o cuidado</p>
                 </div>

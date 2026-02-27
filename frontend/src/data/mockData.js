@@ -105,19 +105,13 @@ export const stats = [
 export const footerLinks = {
   produto: [
     { name: 'Funcionalidades', href: '#funcionalidades' },
-    { name: 'Preços', href: '#' },
-    { name: 'Status do Sistema', href: '#' }
+    { name: 'Preços', href: '#' }
   ],
   empresa: [
-    { name: 'Sobre Nós', href: '#sobre' },
-    { name: 'Blog', href: '#' },
-    { name: 'Carreiras', href: '#' },
-    { name: 'Contato', href: '#' }
+    { name: 'Carreiras', href: '/carreiras' },
+    { name: 'Contato', href: '/contato' }
   ],
   legal: [
-    { name: 'Privacidade', href: '#' },
-    { name: 'Termos de Uso', href: '#' },
-    { name: 'LGPD', href: '#' },
-    { name: 'Cookies', href: '#' }
+    { name: 'Termos de Uso', href: 'https://autismo.danilobruno.com.br/terms', target: '_blank' }
   ]
 };

@@ -32,7 +32,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.produto.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="hover:text-teal-400 transition-colors duration-200">
+                  <a href={link.href} target={link.target || '_self'} rel={link.target === '_blank' ? 'noopener noreferrer' : undefined} className="hover:text-teal-400 transition-colors duration-200">
                     {link.name}
                   </a>
                 </li>
@@ -45,7 +45,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.empresa.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="hover:text-teal-400 transition-colors duration-200">
+                  <a href={link.href} target={link.target || '_self'} rel={link.target === '_blank' ? 'noopener noreferrer' : undefined} className="hover:text-teal-400 transition-colors duration-200">
                     {link.name}
                   </a>
                 </li>
@@ -58,13 +58,14 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="hover:text-teal-400 transition-colors duration-200">
+                  <a href={link.href} target={link.target || '_self'} rel={link.target === '_blank' ? 'noopener noreferrer' : undefined} className="hover:text-teal-400 transition-colors duration-200">
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
+
         </div>
 
         {/* Bottom Bar */}

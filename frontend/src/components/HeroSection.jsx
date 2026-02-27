@@ -22,7 +22,7 @@ const HeroSection = () => {
             </h1>
 
             <p className="text-lg text-gray-700 leading-relaxed max-w-xl">
-              Use a inteligência artificial para entender crises, organizar rotinas e conectar-se com especialistas. 
+              Use a inteligência artificial para entender crises, organizar rotinas e conectar-se com especialistas.
               O cuidado que seu filho merece, com a tecnologia que você precisa.
             </p>
 
@@ -84,9 +84,9 @@ const HeroSection = () => {
 
                 {/* Brand Logo */}
                 <div className="text-center">
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_teado-clone/artifacts/xjm3y939_LogoTeaDoBem.png" 
-                    alt="TEAdobem" 
+                  <img
+                    src="/logo.png"
+                    alt="TEAdobem"
                     className="h-24 w-auto mx-auto object-contain"
                   />
                   <p className="text-gray-600 text-sm mt-2">Inteligência que conecta o cuidado</p>

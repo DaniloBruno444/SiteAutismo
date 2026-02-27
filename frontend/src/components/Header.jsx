@@ -30,9 +30,9 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <img
-              src="https://customer-assets.emergentagent.com/job_teado-clone/artifacts/xjm3y939_LogoTeaDoBem.png"
+              src="/logo.png"
               alt="TEAdobem Logo"
-              className="h-12 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </div>
 

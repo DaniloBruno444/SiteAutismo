@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_teado-clone/artifacts/xjm3y939_LogoTeaDoBem.png" 
-                alt="TEAdobem Logo" 
+              <img
+                src="/logo.png"
+                alt="TEAdobem Logo"
                 className="h-16 w-auto object-contain"
               />
             </div>

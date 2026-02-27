@@ -7,19 +7,50 @@ const features = [
     { icon: Zap, text: 'Agentes Científicos (TEA, Genética, Neuro)' },
     { icon: Video, text: 'Curadoria de Vídeos Validados pela IA' },
     { icon: MessageSquare, text: 'Dica do Dia Personalizada' },
-    { icon: Shield, text: 'Segurança LGPD/HIPAA completa' },
+    { icon: Shield, text: 'Segurança total LGPD/HIPAA' },
     { icon: Heart, text: 'Suporte 24h via e-mail' },
 ];
 
+const planos = [
+    {
+        id: 'mensal',
+        label: 'Mensal',
+        badge: null,
+        precoTotal: 29.90,
+        meses: 1,
+        destaque: false,
+    },
+    {
+        id: 'semestral',
+        label: 'Semestral',
+        badge: 'Mais Popular',
+        precoTotal: 149.90,
+        meses: 6,
+        destaque: true,
+    },
+    {
+        id: 'anual',
+        label: 'Anual',
+        badge: 'Melhor Valor',
+        precoTotal: 249.90,
+        meses: 12,
+        destaque: false,
+    },
+];
+
 const PrecosPage = () => {
-    const [ciclo, setCiclo] = useState('mensal'); // 'mensal' | 'anual'
+    const [cicloId, setCicloId] = useState('semestral');
 
-    const precoMensal = 79.90;
-    const precoAnual = 59.90; // por mês quando pago anualmente
-    const economiaPct = Math.round((1 - precoAnual / precoMensal) * 100);
+    const planoAtual = planos.find(p => p.id === cicloId);
+    const precoMensal = planoAtual.precoTotal / planoAtual.meses;
+    const economiaVsMensal = planoAtual.id !== 'mensal'
+        ? ((planos[0].precoTotal * planoAtual.meses) - planoAtual.precoTotal).toFixed(2)
+        : null;
+    const economiaPct = planoAtual.id !== 'mensal'
+        ? Math.round((1 - planoAtual.precoTotal / (planos[0].precoTotal * planoAtual.meses)) * 100)
+        : null;
 
-    const preco = ciclo === 'mensal' ? precoMensal : precoAnual;
-    const precoTotal = ciclo === 'anual' ? (precoAnual * 12).toFixed(2) : null;
+    const fmt = (n) => Number(n).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-teal-50 font-sans">
@@ -50,86 +81,99 @@ const PrecosPage = () => {
                 {/* Hero */}
                 <div className="text-center mb-14">
                     <span className="inline-block bg-teal-100 text-teal-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
-                        💳 Sem plano gratuito — 100% de funcionalidades desde o início
+                        💳 Acesso completo · Sem plano gratuito · Cancele quando quiser
                     </span>
                     <h1 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
                         Um plano. <span className="text-teal-600">Tudo incluso.</span>
                     </h1>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Acesso completo à plataforma TEAdobem, com toda a inteligência artificial
-                        disponível para cuidar melhor do seu filho.
+                        Escolha o período que melhor se adapta à sua família e tenha acesso
+                        completo à inteligência artificial do TEAdobem.
                     </p>
                 </div>
 
-                {/* Toggle Mensal / Anual */}
-                <div className="flex items-center justify-center gap-4 mb-12">
-                    <button
-                        onClick={() => setCiclo('mensal')}
-                        className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-200
-              ${ciclo === 'mensal'
-                                ? 'bg-teal-500 text-white shadow-md'
-                                : 'bg-white text-gray-600 border border-gray-200 hover:border-teal-300'}`}
-                    >
-                        Mensal
-                    </button>
-                    <button
-                        onClick={() => setCiclo('anual')}
-                        className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 flex items-center gap-2
-              ${ciclo === 'anual'
-                                ? 'bg-teal-500 text-white shadow-md'
-                                : 'bg-white text-gray-600 border border-gray-200 hover:border-teal-300'}`}
-                    >
-                        Anual
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded-full
-              ${ciclo === 'anual' ? 'bg-white text-teal-600' : 'bg-teal-100 text-teal-700'}`}>
-                            -{economiaPct}%
-                        </span>
-                    </button>
+                {/* Toggle de Ciclo */}
+                <div className="flex items-center justify-center gap-3 mb-12 flex-wrap">
+                    {planos.map((p) => (
+                        <button
+                            key={p.id}
+                            onClick={() => setCicloId(p.id)}
+                            className={`relative px-7 py-3 rounded-full font-semibold text-sm transition-all duration-200
+                ${cicloId === p.id
+                                    ? 'bg-teal-500 text-white shadow-lg scale-105'
+                                    : 'bg-white text-gray-600 border border-gray-200 hover:border-teal-300 hover:text-teal-600'}`}
+                        >
+                            {p.label}
+                            {p.badge && cicloId !== p.id && (
+                                <span className="absolute -top-2 -right-2 text-[10px] font-bold bg-orange-400 text-white px-1.5 py-0.5 rounded-full leading-tight">
+                                    {p.badge === 'Mais Popular' ? '🔥' : '🏆'}
+                                </span>
+                            )}
+                        </button>
+                    ))}
                 </div>
 
-                {/* Card de Preço */}
+                {/* Card Principal */}
                 <div className="max-w-lg mx-auto">
-                    <div className="relative bg-white rounded-3xl shadow-2xl border border-teal-100 overflow-hidden">
-                        {/* Faixa decorativa */}
-                        <div className="h-2 bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-500" />
+                    <div className={`relative bg-white rounded-3xl shadow-2xl border-2 overflow-hidden transition-all duration-300
+            ${planoAtual.destaque ? 'border-teal-400' : 'border-teal-100'}`}>
+
+                        {/* Destaque top */}
+                        {planoAtual.destaque && (
+                            <div className="bg-teal-500 text-white text-center text-sm font-bold py-2 tracking-wide">
+                                🔥 PLANO MAIS POPULAR
+                            </div>
+                        )}
+                        {!planoAtual.destaque && planoAtual.id === 'anual' && (
+                            <div className="bg-gradient-to-r from-amber-400 to-orange-400 text-white text-center text-sm font-bold py-2 tracking-wide">
+                                🏆 MELHOR CUSTO-BENEFÍCIO
+                            </div>
+                        )}
+
+                        {/* Faixa superior se não tem destaque */}
+                        {planoAtual.id === 'mensal' && (
+                            <div className="h-2 bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-500" />
+                        )}
 
                         <div className="p-10">
-                            {/* Badge */}
+                            {/* Badge do plano */}
                             <div className="flex items-center justify-between mb-6">
                                 <span className="bg-teal-50 text-teal-700 text-sm font-semibold px-3 py-1 rounded-full border border-teal-200">
-                                    Plano TEAdobem {ciclo === 'anual' ? 'Anual' : 'Mensal'}
+                                    Plano {planoAtual.label}
                                 </span>
-                                {ciclo === 'anual' && (
+                                {economiaPct && (
                                     <span className="bg-green-50 text-green-700 text-xs font-bold px-3 py-1 rounded-full border border-green-200">
-                                        🎉 Melhor valor
+                                        -{economiaPct}% vs mensal
                                     </span>
                                 )}
                             </div>
 
-                            {/* Preço */}
+                            {/* Preço por mês */}
                             <div className="mb-2">
                                 <div className="flex items-end gap-2">
                                     <span className="text-gray-400 text-xl font-medium">R$</span>
                                     <span className="text-6xl font-black text-gray-900 leading-none">
-                                        {preco.toFixed(2).replace('.', ',')}
+                                        {fmt(precoMensal)}
                                     </span>
                                     <span className="text-gray-500 text-lg mb-1">/mês</span>
                                 </div>
-                                {ciclo === 'anual' && (
-                                    <p className="text-sm text-gray-500 mt-2">
-                                        Cobrado anualmente — <strong className="text-gray-700">R$ {Number(precoTotal).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}/ano</strong>
-                                        <span className="ml-2 text-green-600 font-semibold">
-                                            (economia de R$ {((precoMensal - precoAnual) * 12).toFixed(2).replace('.', ',')} vs mensal)
-                                        </span>
-                                    </p>
-                                )}
-                                {ciclo === 'mensal' && (
-                                    <p className="text-sm text-gray-400 mt-1">Cancele quando quiser</p>
+
+                                {planoAtual.id !== 'mensal' ? (
+                                    <div className="mt-3 space-y-1">
+                                        <p className="text-sm text-gray-600">
+                                            Cobrado como <strong className="text-gray-800">R$ {fmt(planoAtual.precoTotal)}</strong> a cada {planoAtual.meses} meses
+                                        </p>
+                                        <p className="text-sm text-green-600 font-semibold">
+                                            💰 Você economiza R$ {fmt(economiaVsMensal)} comparado ao plano mensal
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <p className="text-sm text-gray-400 mt-2">Cobrado mensalmente · Cancele quando quiser</p>
                                 )}
                             </div>
 
                             {/* Formas de pagamento */}
-                            <div className="flex items-center gap-2 mt-4 mb-8 flex-wrap">
+                            <div className="flex items-center gap-2 mt-5 mb-8 flex-wrap">
                                 <span className="text-xs text-gray-500">Aceito:</span>
                                 <span className="text-xs bg-gray-100 px-2 py-1 rounded font-medium text-gray-600">💳 Cartão</span>
                                 <span className="text-xs bg-gray-100 px-2 py-1 rounded font-medium text-gray-600">⚡ Pix</span>
@@ -141,9 +185,12 @@ const PrecosPage = () => {
                                 href="https://autismo.danilobruno.com.br/register"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 w-full bg-teal-500 hover:bg-teal-600 text-white py-4 rounded-2xl font-bold text-lg transition-all duration-200 hover:shadow-lg group"
+                                className={`flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-lg transition-all duration-200 hover:shadow-lg group
+                  ${planoAtual.destaque
+                                        ? 'bg-teal-500 hover:bg-teal-600 text-white'
+                                        : 'bg-teal-500 hover:bg-teal-600 text-white'}`}
                             >
-                                Assinar agora
+                                Assinar plano {planoAtual.label}
                                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </a>
 
@@ -156,7 +203,7 @@ const PrecosPage = () => {
 
                             {/* Funcionalidades */}
                             <p className="text-sm font-bold text-gray-700 mb-5 uppercase tracking-wide">
-                                Tudo incluso no plano:
+                                Tudo incluso em qualquer plano:
                             </p>
                             <ul className="space-y-4">
                                 {features.map(({ icon: Icon, text }, i) => (
@@ -175,10 +222,60 @@ const PrecosPage = () => {
                     </div>
                 </div>
 
-                {/* FAQ rápido */}
-                <div className="mt-20 max-w-2xl mx-auto">
+                {/* Comparativo rápido */}
+                <div className="mt-14 max-w-lg mx-auto">
+                    <h2 className="text-lg font-bold text-gray-800 text-center mb-5">Comparativo de planos</h2>
+                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                        <table className="w-full text-sm">
+                            <thead>
+                                <tr className="bg-gray-50 border-b border-gray-100">
+                                    <th className="text-left text-gray-600 font-semibold px-5 py-3">Plano</th>
+                                    <th className="text-center text-gray-600 font-semibold px-4 py-3">Total</th>
+                                    <th className="text-center text-gray-600 font-semibold px-4 py-3">Por mês</th>
+                                    <th className="text-center text-gray-600 font-semibold px-4 py-3">Economia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {planos.map((p, i) => {
+                                    const pmMes = p.precoTotal / p.meses;
+                                    const eco = p.id !== 'mensal'
+                                        ? Math.round((1 - p.precoTotal / (planos[0].precoTotal * p.meses)) * 100)
+                                        : null;
+                                    return (
+                                        <tr
+                                            key={p.id}
+                                            onClick={() => setCicloId(p.id)}
+                                            className={`border-b border-gray-50 cursor-pointer transition-colors
+                        ${cicloId === p.id ? 'bg-teal-50' : 'hover:bg-gray-50'}`}
+                                        >
+                                            <td className="px-5 py-3 font-semibold text-gray-800 flex items-center gap-2">
+                                                {cicloId === p.id && <span className="w-2 h-2 bg-teal-500 rounded-full inline-block"></span>}
+                                                {p.label}
+                                                {p.badge && <span className="text-[10px] bg-teal-100 text-teal-700 px-1.5 py-0.5 rounded font-bold">{p.badge}</span>}
+                                            </td>
+                                            <td className="px-4 py-3 text-center text-gray-700">R$ {fmt(p.precoTotal)}</td>
+                                            <td className={`px-4 py-3 text-center font-semibold ${cicloId === p.id ? 'text-teal-600' : 'text-gray-700'}`}>
+                                                R$ {fmt(pmMes)}
+                                            </td>
+                                            <td className="px-4 py-3 text-center">
+                                                {eco ? (
+                                                    <span className="text-green-600 font-bold">-{eco}%</span>
+                                                ) : (
+                                                    <span className="text-gray-400">—</span>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                {/* FAQ */}
+                <div className="mt-16 max-w-2xl mx-auto">
                     <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">Dúvidas frequentes</h2>
-                    <div className="space-y-5">
+                    <div className="space-y-4">
                         {[
                             {
                                 p: 'Posso cancelar a qualquer momento?',
@@ -189,12 +286,16 @@ const PrecosPage = () => {
                                 r: 'Aceitamos cartão de crédito (Visa, Mastercard, Elo, Amex), Pix e boleto bancário.'
                             },
                             {
+                                p: 'Posso mudar de plano depois?',
+                                r: 'Sim! Você pode migrar para um plano maior a qualquer momento. A diferença é calculada proporcionalmente.'
+                            },
+                            {
                                 p: 'Meus dados são seguros?',
                                 r: 'Sim. Todos os dados são protegidos com criptografia e estamos em conformidade com a LGPD.'
                             },
                             {
-                                p: 'O plano anual tem alguma vantagem?',
-                                r: `Sim! No plano anual você economiza ${economiaPct}% em relação ao mensal, pagando apenas R$ ${precoAnual.toFixed(2).replace('.', ',')} por mês.`
+                                p: 'Qual a diferença entre os planos?',
+                                r: 'Nenhuma em termos de funcionalidades — todos os planos dão acesso completo à plataforma. A diferença é apenas no período de cobrança e no preço final.'
                             },
                         ].map(({ p, r }, i) => (
                             <div key={i} className="bg-white rounded-2xl px-6 py-5 shadow-sm border border-gray-100">
@@ -206,7 +307,7 @@ const PrecosPage = () => {
                 </div>
 
                 {/* Bottom CTA */}
-                <div className="mt-16 text-center">
+                <div className="mt-14 text-center">
                     <p className="text-gray-500 text-sm mb-4">Ainda tem dúvidas?</p>
                     <a
                         href="/contato"
@@ -219,7 +320,7 @@ const PrecosPage = () => {
 
                 <div className="mt-10 flex items-center justify-center gap-1 text-xs text-gray-400">
                     <Heart className="w-3 h-3 text-red-400 fill-current" />
-                    <span>TEAdobem — Inteligência que conecta o cuidado • Feito com amor no Brasil</span>
+                    <span>TEAdobem — Inteligência que conecta o cuidado · Feito com amor no Brasil</span>
                 </div>
             </div>
         </div>

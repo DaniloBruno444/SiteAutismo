@@ -26,12 +26,11 @@ const CTASection = () => {
               Junte-se a milhares de famílias que já descobriram uma nova forma de entender e apoiar seus filhos com TEA.
             </p>
             <div className="pt-4">
-              <Button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-6 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg">
-                Experimente Grátis por 14 Dias →
-              </Button>
-              <p className="text-sm text-gray-500 mt-4">
-                Sem cartão de crédito • Cancele quando quiser
-              </p>
+              <a href="https://autismo.danilobruno.com.br/register" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-teal-500 hover:bg-teal-600 text-white px-8 py-6 rounded-full text-lg font-medium transition-all duration-200 hover:shadow-lg">
+                  Entrar →
+                </Button>
+              </a>
             </div>
           </div>
         </div>

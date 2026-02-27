@@ -45,7 +45,7 @@ const Header = () => {
             <img
               src="/logo.png"
               alt="TEAdobem Logo"
-              className="h-20 w-auto object-contain"
+              className="h-40 w-auto object-contain"
             />
           </a>
 
@@ -108,8 +108,8 @@ const Header = () => {
               key={item.name}
               onClick={() => handleNavClick(item.href)}
               className={`w-full text-left px-4 py-3 rounded-xl font-medium transition-colors ${item.highlight
-                  ? 'bg-teal-50 text-teal-600 border border-teal-200'
-                  : 'text-gray-700 hover:bg-gray-50 hover:text-teal-600'
+                ? 'bg-teal-50 text-teal-600 border border-teal-200'
+                : 'text-gray-700 hover:bg-gray-50 hover:text-teal-600'
                 }`}
             >
               {item.name} {item.highlight && '💰'}

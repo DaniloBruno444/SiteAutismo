@@ -12,6 +12,7 @@ import { Toaster } from "@/components/ui/sonner";
 import CarreirasPage from '@/pages/CarreirasPage';
 import ContatoPage from '@/pages/ContatoPage';
 import PrecosPage from '@/pages/PrecosPage';
+import CheckoutPage from '@/pages/CheckoutPage';
 
 function HomePage() {
     useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/carreiras" element={<CarreirasPage />} />
                 <Route path="/contato" element={<ContatoPage />} />
                 <Route path="/precos" element={<PrecosPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
             </Routes>
         </BrowserRouter>
     );

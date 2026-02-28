@@ -182,9 +182,7 @@ const PrecosPage = () => {
 
                             {/* CTA */}
                             <a
-                                href="https://autismo.danilobruno.com.br/register"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href={`/checkout?plano=${planoAtual.id}`}
                                 className={`flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-lg transition-all duration-200 hover:shadow-lg group
                   ${planoAtual.destaque
                                         ? 'bg-teal-500 hover:bg-teal-600 text-white'

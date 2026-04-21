@@ -12,7 +12,12 @@ import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import { Toaster } from '@/components/ui/sonner';
 
-function App() {
+import CarreirasPage from '@/pages/CarreirasPage';
+import ContatoPage from '@/pages/ContatoPage';
+import PrecosPage from '@/pages/PrecosPage';
+import CheckoutPage from '@/pages/CheckoutPage';
+
+function HomePage() {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
     return () => { document.documentElement.style.scrollBehavior = 'auto'; };

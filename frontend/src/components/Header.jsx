@@ -18,6 +18,11 @@ const Header = () => {
     if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
   };
 
+  const allNavItems = [
+    ...navigationItems,
+    { name: 'Preços', href: '/precos', highlight: true },
+  ];
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${

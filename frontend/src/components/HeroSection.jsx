@@ -3,6 +3,11 @@ import { Sparkles, Shield, Heart, ArrowRight, Star } from 'lucide-react';
 import { stats } from '../data/mockData';
 
 const HeroSection = () => {
+  const scrollToFeatures = () => {
+    const el = document.querySelector('#funcionalidades');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center bg-hero-gradient overflow-hidden pt-20">
       {/* Background decoration blobs */}

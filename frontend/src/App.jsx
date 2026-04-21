@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
@@ -36,6 +37,20 @@ function App() {
       <Toaster />
     </div>
   );
+}
+
+function App() {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/carreiras" element={<CarreirasPage />} />
+                <Route path="/contato" element={<ContatoPage />} />
+                <Route path="/precos" element={<PrecosPage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

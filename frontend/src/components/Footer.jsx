@@ -96,6 +96,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
+
         </div>
 
         {/* Bottom bar */}
